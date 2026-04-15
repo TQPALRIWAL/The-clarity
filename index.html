@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Clarity — Thoughtful Perspectives</title>
+  <meta name="description" content="Thoughtful writing on technology, culture, and ideas that matter." />
+
+  <!-- ============================================================
+       GOOGLE ANALYTICS 4
+       Replace G-XXXXXXXXXX with your Measurement ID
+       Found in: GA4 > Admin > Data Streams > your stream > Measurement ID
+  ============================================================ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- ============================================================
+       GOOGLE ADSENSE
+       Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID
+       Found in: AdSense > Account > Account information > Publisher ID
+  ============================================================ -->
+async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9984499692105510"
+     crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1814;
+      --ink-muted: #6b6760;
+      --ink-faint: #b0ada8;
+      --paper: #faf9f7;
+      --paper-warm: #f3f1ec;
+      --accent: #c8a96e;
+      --accent-dark: #9e7d45;
+      --border: rgba(26,24,20,0.1);
+      --border-strong: rgba(26,24,20,0.2);
+      --ff-serif: 'Playfair Display', Georgia, serif;
+      --ff-body: 'Crimson Pro', Georgia, serif;
+      --ff-mono: 'DM Mono', monospace;
+      --max: 1140px;
+      --col: 680px;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    .col { max-width: var(--col); margin: 0 auto; }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky; top: 0;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a {
+      font-family: var(--ff-body);
+      font-size: 0.83rem;
+      font-weight: 400;
+      color: var(--ink-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a.cta {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      font-size: 0.75rem;
+    }
+    nav a.cta:hover { background: var(--accent-dark); color: var(--paper); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 20ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--accent-dark); }
+
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--ink-muted);
+      max-width: 55ch;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; align-items: center; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 1.8rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-dark); }
+
+    .btn-ghost {
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── AdSense Banner (leaderboard 728×90 or responsive) ── */
+    .ad-banner {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .ad-label {
+      font-family: var(--ff-mono);
+      font-size: 0.62rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Main layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      padding: 4rem 0;
+      align-items: start;
+    }
+
+    /* ── Featured post ── */
+    .featured {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .featured-image {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      background: var(--paper-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .featured-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16/7;
+      background: linear-gradient(135deg, #e8e4dc 0%, #d4cfc5 100%);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-caption {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+    }
+
+    .post-tag {
+      display: inline-block;
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--accent-dark);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+    }
+    .post-tag:hover { color: var(--ink); }
+
+    .post-title {
+      font-family: var(--ff-serif);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+    }
+    .post-title:hover { color: var(--accent-dark); }
+
+    .featured .post-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+
+    .post-excerpt {
+      color: var(--ink-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-family: var(--ff-mono);
+      font-size: 0.67rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+    }
+
+    .post-meta .author { color: var(--ink-muted); }
+    .post-meta .dot { color: var(--border-strong); }
+
+    .read-more {
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .read-more:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+
+    /* ── Post grid ── */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 2rem;
+    }
+
+    .post-card {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .post-card .post-title { font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .post-card .post-excerpt { font-size: 0.95rem; margin-bottom: 1rem; }
+
+    /* ── Sidebar ── */
+    .sidebar { position: sticky; top: 5rem; }
+
+    .sidebar-section {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-section:last-child { border-bottom: none; }
+
+    .sidebar-title {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Sidebar ad (300×250 medium rectangle) */
+    .ad-sidebar {
+      background: var(--paper-warm);
+      border: 1px dashed var(--border-strong);
+      border-radius: 2px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border-strong);
+      border-radius: 2px;
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      background: transparent;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-form input:focus { border-color: var(--ink); }
+    .newsletter-form input::placeholder { color: var(--ink-faint); }
+
+    .newsletter-form button {
+      width: 100%;
+      padding: 0.65rem;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      border-radius: 2px;
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: var(--accent-dark); }
+
+    .popular-list { list-style: none; }
+    .popular-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+    .popular-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .popular-num {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--accent);
+      min-width: 1.2rem;
+      padding-top: 2px;
+    }
+
+    .popular-link {
+      font-size: 0.9rem;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .popular-link:hover { color: var(--accent-dark); }
+
+    .tags-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .tag {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-strong);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .tag:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── In-article ad ── */
+    .ad-inline {
+      margin: 2.5rem 0;
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand .logo { font-size: 1.2rem; display: block; margin-bottom: 0.75rem; }
+    .footer-desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 2rem; }
+      .sidebar { position: static; }
+      .posts-grid { grid-template-columns: 1fr; }
+      nav a:not(.cta) { display: none; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 0 2.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a class="logo" href="#">The<span>·</span>Clarity</a>
+        <nav>
+          <a href="#" onclick="showPage('essays');return false;">Essays</a>
+          <a href="#" onclick="showPage('topics');return false;">Topics</a>
+          <a href="#" onclick="showPage('about');return false;">About</a>
+          <a href="#" class="cta" onclick="showPage('subscribe');return false;">Subscribe</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Top Banner Ad (Responsive AdSense) ── -->
+  <div class="ad-banner">
+    <div class="container">
+      <div class="ad-label">Advertisement</div>
+      <!-- ADSENSE: Responsive ad unit — replace data-ad-client and data-ad-slot -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9984499692105510"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero" style="background: linear-gradient(to right, var(--paper) 55%, transparent 100%), url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1400&q=70&auto=format&fit=crop') right center / cover no-repeat;">
+    <div class="container">
+      <p class="hero-eyebrow">Est. 2025 · Independent Publishing</p>
+      <h1>Ideas worth <em>sitting with</em> a little longer</h1>
+      <p class="hero-lead">
+        Long-form essays on technology, design, and the quiet patterns shaping how we live and work.
+        Written slowly, published deliberately.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Read latest issue</a>
+        <a href="#" class="btn-ghost">Browse all essays →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <main>
+    <div class="container">
+      <div class="layout">
+
+        <!-- ── Posts Column ── -->
+        <div class="main-content">
+
+          <!-- Featured post -->
+          <article class="featured">
+            <div class="section-label">Featured essay</div>
+
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80&auto=format&fit=crop"
+              alt="Person browsing digital content on multiple screens"
+              style="width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:2px;margin-bottom:1.5rem;display:block;"
+            />
+
+            <a class="post-tag" href="#">Technology · Culture</a>
+            <a class="post-title" href="#" style="font-size:clamp(1.6rem, 3vw, 2.2rem);">
+              The slow erosion of serendipity in digital life
+            </a>
+            <p class="post-excerpt">
+              Algorithms optimise for relevance, but relevance is not the same as meaning. 
+              In our pursuit of perfect curation, we may be quietly closing doors to the unexpected — 
+              and with them, some of our best ideas.
+            </p>
+
+            <!-- ADSENSE: In-article ad (fits naturally between content) -->
+            <div class="ad-inline">
+              <div class="ad-label">Advertisement</div>
+              <ins class="adsbygoogle"
+                   style="display:block; text-align:center;"
+                   data-ad-layout="in-article"
+                   data-ad-format="fluid"
+                   data-ad-client="ca-pub-9984499692105510"
+                   data-ad-slot="0987654321"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <div class="post-meta" style="margin-bottom:1.2rem;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="Aryan Mehta" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" />
+              <span class="author">Aryan Mehta</span>
+              <span class="dot">·</span>
+              <span>12 April 2025</span>
+              <span class="dot">·</span>
+              <span>8 min read</span>
+            </div>
+            <a class="read-more" href="#">Continue reading</a>
+          </article>
+
+          <!-- Post grid -->
+          <div class="section-label">Recent essays</div>
+          <div class="posts-grid">
+
+            <article class="post-card">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80&auto=format&fit=crop" alt="Minimalist design" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin-bottom:1rem;display:block;" />
+              <a class="post-tag" href="#">Design</a>
+              <a class="post-title" href="#">On the aesthetics of restraint — why less still surprises us</a>
+              <p class="post-excerpt">Minimalism was supposed to be a movement. Instead it became a marketing strategy. What happened?</p>
+              <div class="post-meta">
+                <span class="author">Priya Nair</span>
+                <span class="dot">·</span>
+                <span>6 min read</span>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80&auto=format&fit=crop" alt="Smartphone with social media" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin-bottom:1rem;display:block;" />
+              <a class="post-tag" href="#">Economics</a>
+              <a class="post-title" href="#">The invisible tax on attention and who profits from it</a>
+              <p class="post-excerpt">Every app competes for the same finite resource. We rarely ask where the value actually flows.</p>
+              <div class="post-meta">
+                <span class="author">Rahul Das</span>
+                <span class="dot">·</span>
+                <span>10 min read</span>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <img src="https://images.unsplash.com/photo-1532094349884-543559a8c48c?w=600&q=80&auto=format&fit=crop" alt="Science and data" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin-bottom:1rem;display:block;" />
+              <a class="post-tag" href="#">Science</a>
+              <a class="post-title" href="#">Why experts are so often wrong about the future</a>
+              <p class="post-excerpt">Forecasting is hard. But the patterns of expert failure are strikingly predictable.</p>
+              <div class="post-meta">
+                <span class="author">Meera Singh</span>
+                <span class="dot">·</span>
+                <span>7 min read</span>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&auto=format&fit=crop" alt="City skyline at dusk" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin-bottom:1rem;display:block;" />
+              <a class="post-tag" href="#">Society</a>
+              <a class="post-title" href="#">The geography of ambition — why some cities still pull harder</a>
+              <p class="post-excerpt">Remote work promised to flatten the map. The data suggests otherwise.</p>
+              <div class="post-meta">
+                <span class="author">Aryan Mehta</span>
+                <span class="dot">·</span>
+                <span>9 min read</span>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Footer in-feed ad -->
+          <div class="ad-inline" style="margin-top:3rem;">
+            <div class="ad-label">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9984499692105510"
+                 data-ad-slot="1122334455"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+        </div>
+
+        <!-- ── Sidebar ── -->
+        <aside class="sidebar">
+
+          <!-- Sidebar ad: 300×250 Medium Rectangle (best earning format) -->
+          <div class="sidebar-section">
+            <div class="sidebar-title">Advertisement</div>
+            <div class="ad-sidebar">
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:250px"
+                   data-ad-client="ca-pub-9984499692105510"
+                   data-ad-slot="5566778899"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="sidebar-section">
+            <div class="sidebar-title">Stay in the loop</div>
+            <p style="font-size:0.9rem;color:var(--ink-muted);margin-bottom:1rem;line-height:1.6;">
+              One essay, every two weeks. No noise.
+            </p>
+            <div class="newsletter-form" id="sidebar-newsletter">
+              <input type="email" id="sidebar-email" placeholder="your@email.com" />
+              <button type="button" onclick="handleSubscribe('sidebar')">Subscribe →</button>
+            </div>
+            <div id="sidebar-success" style="display:none;background:var(--paper-warm);border:1px solid var(--accent);border-radius:2px;padding:0.9rem 1rem;text-align:center;">
+              <p style="font-family:var(--ff-mono);font-size:0.7rem;color:var(--accent-dark);letter-spacing:0.08em;margin-bottom:0.3rem;">✓ YOU'RE IN</p>
+              <p style="font-size:0.88rem;color:var(--ink-muted);line-height:1.5;">Thanks! Your first issue is on its way.</p>
+            </div>
+          </div>
+
+          <!-- Popular posts -->
+          <div class="sidebar-section">
+            <div class="sidebar-title">Most read</div>
+            <ul class="popular-list">
+              <li>
+                <span class="popular-num">01</span>
+                <a class="popular-link" href="#">The slow erosion of serendipity in digital life</a>
+              </li>
+              <li>
+                <span class="popular-num">02</span>
+                <a class="popular-link" href="#">On the aesthetics of restraint</a>
+              </li>
+              <li>
+                <span class="popular-num">03</span>
+                <a class="popular-link" href="#">Why experts are so often wrong about the future</a>
+              </li>
+              <li>
+                <span class="popular-num">04</span>
+                <a class="popular-link" href="#">The invisible tax on attention</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tags -->
+          <div class="sidebar-section">
+            <div class="sidebar-title">Topics</div>
+            <div class="tags-cloud">
+              <a class="tag" href="#">Technology</a>
+              <a class="tag" href="#">Design</a>
+              <a class="tag" href="#">Economics</a>
+              <a class="tag" href="#">Society</a>
+              <a class="tag" href="#">Science</a>
+              <a class="tag" href="#">Culture</a>
+              <a class="tag" href="#">AI</a>
+              <a class="tag" href="#">Environment</a>
+            </div>
+          </div>
+
+          <!-- Second sidebar ad: 300×600 Half Page (premium) -->
+          <div class="sidebar-section">
+            <div class="sidebar-title">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-9984499692105510"
+                 data-ad-slot="9988776655"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="logo" href="#">The<span>·</span>Clarity</a>
+          <p class="footer-desc">
+            Independent long-form writing on the ideas and forces quietly shaping our world.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Read</h4>
+          <ul class="footer-links">
+            <li><a href="#">Latest essays</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Society</a></li>
+            <li><a href="#">Archive</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Publication</h4>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Subscribe</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 The Clarity. All rights reserved.</span>
+        <span class="footer-copy">Built for clarity, not noise.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── ESSAYS PAGE ── -->
+  <div id="page-essays" style="display:none;">
+    <section style="padding:4rem 0 2rem;border-bottom:1px solid var(--border);">
+      <div class="container">
+        <p class="hero-eyebrow">All Writing</p>
+        <h1 style="font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-0.03em;margin-bottom:1rem;">Essays</h1>
+        <p style="color:var(--ink-muted);font-size:1.05rem;max-width:52ch;">Every piece we've published — sorted by most recent. Take your time.</p>
+      </div>
+    </section>
+    <div class="container" style="padding:3rem 0;">
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <!-- Essay row -->
+        <article style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.5rem;">Technology · Culture</a>
+            <a class="post-title" href="#" style="font-size:1.3rem;display:block;margin-bottom:0.5rem;">The slow erosion of serendipity in digital life</a>
+            <p class="post-excerpt" style="margin-bottom:0.75rem;">Algorithms optimise for relevance, but relevance is not the same as meaning.</p>
+            <div class="post-meta"><span class="author">Aryan Mehta</span><span class="dot">·</span><span>12 April 2025</span><span class="dot">·</span><span>8 min read</span></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&q=80&auto=format&fit=crop" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:2px;" />
+        </article>
+        <article style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.5rem;">Design</a>
+            <a class="post-title" href="#" style="font-size:1.3rem;display:block;margin-bottom:0.5rem;">On the aesthetics of restraint — why less still surprises us</a>
+            <p class="post-excerpt" style="margin-bottom:0.75rem;">Minimalism was supposed to be a movement. Instead it became a marketing strategy.</p>
+            <div class="post-meta"><span class="author">Priya Nair</span><span class="dot">·</span><span>28 March 2025</span><span class="dot">·</span><span>6 min read</span></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&q=80&auto=format&fit=crop" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:2px;" />
+        </article>
+        <article style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.5rem;">Economics</a>
+            <a class="post-title" href="#" style="font-size:1.3rem;display:block;margin-bottom:0.5rem;">The invisible tax on attention and who profits from it</a>
+            <p class="post-excerpt" style="margin-bottom:0.75rem;">Every app competes for the same finite resource. We rarely ask where the value flows.</p>
+            <div class="post-meta"><span class="author">Rahul Das</span><span class="dot">·</span><span>14 March 2025</span><span class="dot">·</span><span>10 min read</span></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=200&q=80&auto=format&fit=crop" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:2px;" />
+        </article>
+        <article style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.5rem;">Science</a>
+            <a class="post-title" href="#" style="font-size:1.3rem;display:block;margin-bottom:0.5rem;">Why experts are so often wrong about the future</a>
+            <p class="post-excerpt" style="margin-bottom:0.75rem;">Forecasting is hard. But the patterns of expert failure are strikingly predictable.</p>
+            <div class="post-meta"><span class="author">Meera Singh</span><span class="dot">·</span><span>2 March 2025</span><span class="dot">·</span><span>7 min read</span></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1532094349884-543559a8c48c?w=200&q=80&auto=format&fit=crop" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:2px;" />
+        </article>
+        <article style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.5rem;">Society</a>
+            <a class="post-title" href="#" style="font-size:1.3rem;display:block;margin-bottom:0.5rem;">The geography of ambition — why some cities still pull harder</a>
+            <p class="post-excerpt" style="margin-bottom:0.75rem;">Remote work promised to flatten the map. The data suggests otherwise.</p>
+            <div class="post-meta"><span class="author">Aryan Mehta</span><span class="dot">·</span><span>18 Feb 2025</span><span class="dot">·</span><span>9 min read</span></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=200&q=80&auto=format&fit=crop" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:2px;" />
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TOPICS PAGE ── -->
+  <div id="page-topics" style="display:none;">
+    <section style="padding:4rem 0 2rem;border-bottom:1px solid var(--border);">
+      <div class="container">
+        <p class="hero-eyebrow">Browse by theme</p>
+        <h1 style="font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-0.03em;margin-bottom:1rem;">Topics</h1>
+        <p style="color:var(--ink-muted);font-size:1.05rem;max-width:52ch;">Find writing that matches what you're curious about right now.</p>
+      </div>
+    </section>
+    <div class="container" style="padding:3rem 0;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80&auto=format&fit=crop" alt="Technology" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Technology</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">AI, software, digital culture & the internet's effect on society.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">12 essays</p>
+          </div>
+        </div>
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80&auto=format&fit=crop" alt="Design" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Design</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">Aesthetics, UX philosophy, minimalism, and the craft of making things.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">8 essays</p>
+          </div>
+        </div>
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&q=80&auto=format&fit=crop" alt="Economics" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Economics</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">Incentives, markets, attention economies, and how money shapes behaviour.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">6 essays</p>
+          </div>
+        </div>
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1532094349884-543559a8c48c?w=500&q=80&auto=format&fit=crop" alt="Science" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Science</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">Research, forecasting, epistemology, and what evidence actually tells us.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">9 essays</p>
+          </div>
+        </div>
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500&q=80&auto=format&fit=crop" alt="Society" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Society</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">Cities, ambition, culture, belonging, and how people live together.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">7 essays</p>
+          </div>
+        </div>
+        <div style="background:var(--paper-warm);border-radius:2px;overflow:hidden;border:1px solid var(--border);">
+          <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&q=80&auto=format&fit=crop" alt="Culture" style="width:100%;height:140px;object-fit:cover;display:block;" />
+          <div style="padding:1.2rem;">
+            <a class="post-tag" href="#" style="display:inline-block;margin-bottom:0.4rem;">Culture</a>
+            <p style="font-size:0.9rem;color:var(--ink-muted);">Books, ideas, media, taste, and the forces that shape what we care about.</p>
+            <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:0.8rem;letter-spacing:0.06em;">11 essays</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT PAGE ── -->
+  <div id="page-about" style="display:none;">
+    <div class="container" style="padding:5rem 0;max-width:720px;">
+      <p class="hero-eyebrow">Who we are</p>
+      <h1 style="font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-0.03em;margin-bottom:2rem;">About The Clarity</h1>
+      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=80&auto=format&fit=crop" alt="A quiet reading desk" style="width:100%;height:320px;object-fit:cover;border-radius:2px;margin-bottom:2.5rem;display:block;" />
+      <p style="font-size:1.1rem;line-height:1.9;color:var(--ink-muted);margin-bottom:1.5rem;">The Clarity is an independent publication dedicated to long-form writing on the ideas, forces, and quiet patterns shaping how we live, think, and work. We believe that the best thinking takes time — and so does the best reading.</p>
+      <p style="font-size:1.1rem;line-height:1.9;color:var(--ink-muted);margin-bottom:1.5rem;">We are not a news outlet. We do not chase trends. We publish one essay every two weeks — carefully researched, carefully written, and designed to stay relevant long after the news cycle has moved on.</p>
+      <p style="font-size:1.1rem;line-height:1.9;color:var(--ink-muted);margin-bottom:2.5rem;">The Clarity is entirely reader-supported. We do not take advertising or sponsored content. Every article is freely available. If you find the writing valuable, the best way to support us is to subscribe and share.</p>
+      <hr style="border:none;border-top:1px solid var(--border);margin-bottom:2.5rem;" />
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;">
+        <div style="text-align:center;">
+          <p style="font-family:var(--ff-serif);font-size:2rem;font-weight:400;color:var(--accent-dark);margin-bottom:0.3rem;">53</p>
+          <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Essays published</p>
+        </div>
+        <div style="text-align:center;">
+          <p style="font-family:var(--ff-serif);font-size:2rem;font-weight:400;color:var(--accent-dark);margin-bottom:0.3rem;">12k</p>
+          <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Subscribers</p>
+        </div>
+        <div style="text-align:center;">
+          <p style="font-family:var(--ff-serif);font-size:2rem;font-weight:400;color:var(--accent-dark);margin-bottom:0.3rem;">2021</p>
+          <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Founded</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUBSCRIBE PAGE ── -->
+  <div id="page-subscribe" style="display:none;">
+    <div class="container" style="padding:6rem 0;max-width:600px;text-align:center;">
+      <p class="hero-eyebrow" style="text-align:center;">Join the readers</p>
+      <h1 style="font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-0.03em;margin-bottom:1rem;">Get the next essay in your inbox</h1>
+      <p style="color:var(--ink-muted);font-size:1.05rem;line-height:1.8;margin-bottom:2.5rem;">One thoughtful essay, every two weeks. No noise, no spam — unsubscribe anytime.</p>
+      <div id="subscribe-form" style="display:flex;flex-direction:column;gap:0.8rem;max-width:420px;margin:0 auto;">
+        <input type="email" id="subscribe-email" placeholder="your@email.com" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border-strong);border-radius:2px;font-family:var(--ff-body);font-size:1rem;background:transparent;color:var(--ink);outline:none;" />
+        <button type="button" onclick="handleSubscribe('subscribe')" style="width:100%;padding:0.85rem;background:var(--ink);color:var(--paper);border:none;border-radius:2px;font-family:var(--ff-body);font-size:1rem;cursor:pointer;letter-spacing:0.04em;transition:background 0.2s;">Subscribe — it's free →</button>
+      </div>
+      <div id="subscribe-success" style="display:none;margin:0 auto;max-width:420px;background:var(--paper-warm);border:1px solid var(--accent);border-radius:2px;padding:1.5rem;">
+        <p style="font-family:var(--ff-mono);font-size:0.72rem;color:var(--accent-dark);letter-spacing:0.1em;margin-bottom:0.5rem;">✓ YOU'RE SUBSCRIBED</p>
+        <p style="font-size:1rem;color:var(--ink-muted);line-height:1.7;">Welcome! Your first issue lands in your inbox within the next two weeks. Thank you for reading.</p>
+      </div>
+      <p style="font-family:var(--ff-mono);font-size:0.65rem;color:var(--ink-faint);margin-top:1.5rem;letter-spacing:0.06em;">Joined by 12,000+ readers · No spam · Unsubscribe anytime</p>
+    </div>
+  </div>
+
+  <script>
+    var pages = ['home','essays','topics','about','subscribe'];
+
+    function showPage(name) {
+      // hide all pages
+      document.getElementById('home-content').style.display = 'none';
+      document.getElementById('home-hero').style.display = 'none';
+      document.getElementById('home-adbanner').style.display = 'none';
+      pages.forEach(function(p) {
+        var el = document.getElementById('page-' + p);
+        if (el) el.style.display = 'none';
+      });
+
+      if (name === 'home') {
+        document.getElementById('home-content').style.display = '';
+        document.getElementById('home-hero').style.display = '';
+        document.getElementById('home-adbanner').style.display = '';
+      } else {
+        var target = document.getElementById('page-' + name);
+        if (target) target.style.display = '';
+      }
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function handleSubscribe(source) {
+      var emailInput = document.getElementById(source === 'sidebar' ? 'sidebar-email' : 'subscribe-email');
+      var email = emailInput ? emailInput.value.trim() : '';
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        emailInput.style.borderColor = '#c0392b';
+        emailInput.placeholder = 'Please enter a valid email';
+        setTimeout(function(){ emailInput.style.borderColor = ''; emailInput.placeholder = 'your@email.com'; }, 2000);
+        return;
+      }
+      if (source === 'sidebar') {
+        document.getElementById('sidebar-newsletter').style.display = 'none';
+        document.getElementById('sidebar-success').style.display = '';
+      } else {
+        document.getElementById('subscribe-form').style.display = 'none';
+        document.getElementById('subscribe-success').style.display = '';
+      }
+    }
+
+    // wrap home sections so we can hide/show them
+    window.addEventListener('DOMContentLoaded', function() {
+      var hero = document.querySelector('.hero');
+      var adBanner = document.querySelector('.ad-banner');
+      var mainEl = document.querySelector('main');
+      if (hero) hero.id = 'home-hero';
+      if (adBanner) adBanner.id = 'home-adbanner';
+      if (mainEl) mainEl.id = 'home-content';
+    });
+  </script>
+
+</body>
+</html>
